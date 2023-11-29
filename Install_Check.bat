@@ -12,7 +12,7 @@ if "%REG1%" == "検索の完了: 該当 1 件" (goto :NEXT)
 
 :inst
 
-::管理者権限に昇格
+::管理者権限に昇格、変数設定
 
 whoami /priv | find "SeDebugPrivilege" > nul
 if %errorlevel% neq 0 (
@@ -20,12 +20,13 @@ if %errorlevel% neq 0 (
 exit
 )
 
-::5回インストールを繰り返し、成功で次回確認用レジストリ追加後終了
-
 set I=0
 set P=1
 
+
 :loop1
+
+::5回インストールを繰り返し、成功で次回確認用レジストリ追加後終了
 
 MsiExec.exe /I "<<任意のパス\ソフト名>>" /quiet /norestart
 
@@ -46,6 +47,7 @@ set REG=
 
 ::※※レジストリーの値を追加
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\<<ソフト名など_Name1>>" /v <<ソフト名など_Name2>> /t REG_SZ /d <<任意の文字列A>> /f
+
 
 :NEXT
 
