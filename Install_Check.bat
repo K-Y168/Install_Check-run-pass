@@ -1,20 +1,18 @@
 @echo off
-::UAC‚Ì’Ê’m‚ğ‰ñ”ğ‚·‚é‚½‚ßA’ÊíÀs
+::UACã®é€šçŸ¥ã‚’å›é¿ã™ã‚‹ãŸã‚ã€é€šå¸¸å®Ÿè¡Œ
 
-::ƒ\ƒtƒg‚ÌƒCƒ“ƒXƒg[ƒ‹A³‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚©‚ÌŠm”F
+::ã‚½ãƒ•ãƒˆã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã€æ­£ã—ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ã‹ã®ç¢ºèª
 
-if not exist "<<Program Files‚Ü‚½‚ÍProgram Files (x86)“à‚Ì‘ÎÛƒ\ƒtƒg‚Ì.exe>>" (goto :inst)
+if not exist "<<Program Filesã¾ãŸã¯Program Files (x86)å†…ã®å¯¾è±¡ã‚½ãƒ•ãƒˆã®.exe>>" (goto :inst)
 
-for /f "usebackq tokens=*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Assemblies\<<“WŠJæƒpƒX|ƒo[ƒWƒ‡ƒ“‚Ì’l‚ªŠi”[‚³‚ê‚Ä‚¢‚éƒL[–¼>>" /v "<<ƒL[“à‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚Ü‚Å‚Ì–¼‘O>>"*"`) do set REG1=%%A
+for /f "usebackq tokens=*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Assemblies\<<å±•é–‹å…ˆãƒ‘ã‚¹|ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®å€¤ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼å>>" /v "<<ã‚­ãƒ¼å†…ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã¾ã§ã®åå‰>>"*"`) do set REG1=%%A
 
-if "%REG1%" == "ŒŸõ‚ÌŠ®—¹: ŠY“– 1 Œ" (goto :NEXT)
+if "%REG1%" == "æ¤œç´¢ã®å®Œäº†: è©²å½“ 1 ä»¶" (goto :NEXT)
 
-
-::ƒCƒ“ƒXƒg[ƒ‹‚ª•K—v‚Å‚ ‚ê‚Îu:instv‚ÉƒWƒƒƒ“ƒv
 
 :inst
 
-::ŠÇ—ÒŒ ŒÀ‚É¸Ši
+::ç®¡ç†è€…æ¨©é™ã«æ˜‡æ ¼
 
 whoami /priv | find "SeDebugPrivilege" > nul
 if %errorlevel% neq 0 (
@@ -22,23 +20,23 @@ if %errorlevel% neq 0 (
 exit
 )
 
-::5‰ñƒCƒ“ƒXƒg[ƒ‹‚ğŒJ‚è•Ô‚µA¬Œ÷‚ÅŸ‰ñŠm”F—pƒŒƒWƒXƒgƒŠ’Ç‰ÁŒãI—¹
+::5å›ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã‚’ç¹°ã‚Šè¿”ã—ã€æˆåŠŸã§æ¬¡å›ç¢ºèªç”¨ãƒ¬ã‚¸ã‚¹ãƒˆãƒªè¿½åŠ å¾Œçµ‚äº†
 
 set I=0
 set P=1
 
 :loop1
 
-MsiExec.exe /I "<<”CˆÓ‚ÌƒpƒX\ƒ\ƒtƒg–¼>>" /quiet /norestart
+MsiExec.exe /I "<<ä»»æ„ã®ãƒ‘ã‚¹\ã‚½ãƒ•ãƒˆå>>" /quiet /norestart
 
-::ƒCƒ“ƒXƒg[ƒ‹‚É‚T‰ñ¸”s‚µ‚½‚çƒGƒ‰[ƒƒbƒZ[ƒW‚ğo—Í‚µ‚ÄI—¹
+::ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã«ï¼•å›å¤±æ•—ã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã—ã¦çµ‚äº†
 
-if %I% == 5 (call "<<”CˆÓ‚ÌƒpƒX>>\Error_messege-I.vbs")
+if %I% == 5 (call "<<ä»»æ„ã®ãƒ‘ã‚¹>>\Error_messege-I.vbs")
 if %I% == 5 (goto :EXIT)
 set /a I=%I%+%P%
 
-::ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚©‚ğ.exe—L–³‚ÅŠm”FA‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Îuloop1v‚ÖƒWƒƒƒ“ƒv
-if exist "<<Program Files‚Ü‚½‚ÍProgram Files (x86)“à‚Ì‘ÎÛƒ\ƒtƒg‚Ì.exe>>" (set I=6)
+::ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’.exeæœ‰ç„¡ã§ç¢ºèªã€ã•ã‚Œã¦ã„ãªã‘ã‚Œã°ã€Œloop1ã€ã¸ã‚¸ãƒ£ãƒ³ãƒ—
+if exist "<<Program Filesã¾ãŸã¯Program Files (x86)å†…ã®å¯¾è±¡ã‚½ãƒ•ãƒˆã®.exe>>" (set I=6)
 
 if %I% leq 5 (goto :loop1)
 if %I% geq 6 (set I=)
@@ -46,15 +44,15 @@ if %I% geq 6 (set I=)
 set P=
 set REG=
 
-::¦¦ƒŒƒWƒXƒgƒŠ[‚Ì’l‚ğ’Ç‰Á
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\<<ƒ\ƒtƒg–¼‚È‚Ç_Name1>>" /v <<ƒ\ƒtƒg–¼‚È‚Ç_Name2>> /t REG_SZ /d <<”CˆÓ‚Ì•¶š—ñA>> /f
+::â€»â€»ãƒ¬ã‚¸ã‚¹ãƒˆãƒªãƒ¼ã®å€¤ã‚’è¿½åŠ 
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\<<ã‚½ãƒ•ãƒˆåãªã©_Name1>>" /v <<ã‚½ãƒ•ãƒˆåãªã©_Name2>> /t REG_SZ /d <<ä»»æ„ã®æ–‡å­—åˆ—A>> /f
 
 :NEXT
 
-::¦¦‚Å’Ç‰Á‚µ‚½ƒŒƒWƒXƒgƒŠ[‚Ì’l‚ğÆ‡
-for /f "usebackq tokens=*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\<<ƒ\ƒtƒg–¼‚È‚Ç_Name1>>" /v <<ƒ\ƒtƒg–¼‚È‚Ç_Name2>>`) do set REG2=%%A
+::â€»â€»ã§è¿½åŠ ã—ãŸãƒ¬ã‚¸ã‚¹ãƒˆãƒªãƒ¼ã®å€¤ã‚’ç…§åˆ
+for /f "usebackq tokens=*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\<<ã‚½ãƒ•ãƒˆåãªã©_Name1>>" /v <<ã‚½ãƒ•ãƒˆåãªã©_Name2>>`) do set REG2=%%A
 
-if "%REG2%" == "<<ƒ\ƒtƒg–¼‚È‚Ç_Name2>>    REG_SZ    <<”CˆÓ‚Ì•¶š—ñA>>" (goto :EXIT) else (goto :inst)
+if "%REG2%" == "<<ã‚½ãƒ•ãƒˆåãªã©_Name2>>    REG_SZ    <<ä»»æ„ã®æ–‡å­—åˆ—A>>" (goto :EXIT) else (goto :inst)
 
 :EXIT
 
