@@ -1,4 +1,4 @@
-# Install_Check-run-passについて
+# Install_Checkについて
 <br>
 
 ## 概要
