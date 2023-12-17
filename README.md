@@ -1,4 +1,4 @@
-# Install_Checkについて
+# Install_Check_prについて
 <br>
 
 ## 概要
